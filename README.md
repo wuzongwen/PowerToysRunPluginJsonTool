@@ -10,8 +10,8 @@
 
 ## 界面截图
 
-![界面截图](Resources\界面截图.png)
+![界面截图](Resources/界面截图.png)
 
 ## 演示动画
 
-![演示动画](Resources\演示动画.gif)
+![演示动画](Resources/演示动画.gif)
