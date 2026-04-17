@@ -1,0 +1,15 @@
+{
+  "ID": "b2c3d4e5-f6a7-8901-b2c3-d4e5f6a78901",
+  "ActionKeyword": "json",
+  "IsGlobal": false,
+  "Name": "JSON工具箱",
+  "Description": "JSON工具箱",
+  "Author": "Zooven",
+  "Version": "1.0.0",
+  "Language": "csharp",
+  "Website": "https://github.com/wuzongwen/PowerToysRunPluginJsonTool",
+  "ExecuteFileName": "PowerToys.Run.Plugin.JsonTool.dll",
+  "IcoPathDark": "Images/icon.dark.png",
+  "IcoPathLight": "Images/icon.light.png",
+  "DynamicLoading": false
+}

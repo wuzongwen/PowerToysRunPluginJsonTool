@@ -1,0 +1,125 @@
+<Window x:Class="Community.PowerToys.Run.Plugin.JsonTool.JsonToolWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="JSON 工具箱" Height="720" Width="1020"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5" Icon="/PowerToys.Run.Plugin.JsonTool;component/Images/icon.light.png">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="AcceptsTab" Value="True"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ToggleButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#1976D2"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TreeViewItem">
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style TargetType="ScrollBar">
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- 输入标签 -->
+        <TextBlock Grid.Row="0" Text="输入 JSON" Foreground="#666666" Margin="0,0,0,5"/>
+        
+        <!-- 输入框 -->
+        <TextBox Grid.Row="1" x:Name="InputTextBox"/>
+        
+        <!-- 按钮面板 -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,15">
+            <Button Content="格式化" Background="#1976D2" Click="FormatClick"/>
+            <Button Content="压缩" Background="#757575" Click="CompressClick"/>
+            <Button Content="转义" Background="#757575" Click="EscapeClick"/>
+            <Button Content="去转义" Background="#757575" Click="UnescapeClick"/>
+            <Button Content="验证" Background="#F57C00" Click="ValidateClick"/>
+            <Button Content="排序" Background="#7B1FA2" Click="SortClick"/>
+            <Button Content="生成C#实体类" Background="#7B1FA2" Click="GenerateCSharpClick"/>
+            <Button Content="清空" Background="#D32F2F" Click="ClearClick"/>
+        </StackPanel>
+        
+        <!-- 输出标签 + 状态 + 切换 -->
+        <Grid Grid.Row="3" Margin="0,10,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="处理结果" Foreground="#666666" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" x:Name="StatusText" Foreground="#2E7D32" FontSize="13" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <RadioButton x:Name="TextModeRadio" Content="文本" GroupName="OutputMode" IsChecked="True" Click="TextModeClick" Margin="0,0,10,0" Cursor="Hand"/>
+                <RadioButton x:Name="TreeModeRadio" Content="可视化视图" GroupName="OutputMode" Click="TreeModeClick" Cursor="Hand"/>
+            </StackPanel>
+        </Grid>
+        
+        <!-- 输出区域 -->
+        <Grid Grid.Row="4">
+            <TextBox x:Name="OutputTextBox" IsReadOnly="True" Background="White" Visibility="Visible" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Auto"/>
+            <ScrollViewer x:Name="TreeViewScroller" Visibility="Collapsed" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="White" PanningMode="VerticalFirst">
+                <TreeView x:Name="JsonTreeView" Background="White" BorderBrush="#E0E0E0" BorderThickness="1" Padding="10"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
