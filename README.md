@@ -5,13 +5,12 @@
 ```bash
 %LOCALAPPDATA%\Microsoft\PowerToys\PowerToys Run\Plugins
 ```
+### 注意事项
+如果使用不了可以安装一下.NET8的桌面运行时
+[下载地址](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ## 界面截图
 ![界面截图](Resources/界面截图.png)
 
 ## 演示动画
 ![演示动画](Resources/演示动画.gif)
-
-## 注意事项
-如果使用不了可以安装一下.NET8的桌面运行时
-[下载地址](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
