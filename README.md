@@ -14,4 +14,4 @@
 
 ## 注意事项
 如果使用不了可以安装一下.NET8的桌面运行时
-[下载地址]([https://www.google.com](https://dotnet.microsoft.com/en-us/download/dotnet/8.0))
+[下载地址](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
