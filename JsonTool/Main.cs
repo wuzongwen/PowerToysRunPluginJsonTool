@@ -30,8 +30,8 @@ namespace Community.PowerToys.Run.Plugin.JsonTool
             {
                 results.Add(new Result
                 {
-                    Title = "JSON工具",
-                    SubTitle = "输入json空格+JSON内容 打开工具窗口",
+                    Title = "JSON工具箱",
+                    SubTitle = "输入json空格+JSON内容 打开JSON工具箱窗口",
                     IcoPath = IconPath,
                     Action = _ => { ShowWindow(null); return true; }
                 });
