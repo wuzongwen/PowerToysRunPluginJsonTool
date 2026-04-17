@@ -13,8 +13,8 @@ namespace Community.PowerToys.Run.Plugin.JsonTool
         private string? IconPath { get; set; }
         private PluginInitContext? Context { get; set; }
 
-        public string Name => "JSON工具";
-        public string Description => "JSON格式化、压缩、转义、生成C#实体等工具";
+        public string Name => "JSON工具箱";
+        public string Description => "JSON格式化、压缩、转义、生成C#实体类等工具";
 
         public void Init(PluginInitContext context)
         {
